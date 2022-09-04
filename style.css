@@ -22,9 +22,10 @@ body {
 
 .display {
     flex: 1;
+    padding: 0 1em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-end;
 }
 
@@ -33,7 +34,8 @@ body {
 }
 
 .answer {
-    font-size: 3vh;
+    font-size: 6vh;
+    font-weight: bold;
 }
 
 .buttons {
@@ -46,10 +48,22 @@ body {
 button {
     font-size: large;
     font-weight: bold;
-    background-color: #ececec;
+    background-color: #ffffff;
     border: none;
+}
+
+.operation {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 #equals {
     background-color: #5E76A2;
+}
+
+#C {
+    background-color: #996666;
+}
+
+#CE {
+    background-color: #994C4C;
 }
