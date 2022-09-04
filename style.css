@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body {
+    width: 52vmin;
+    height: 70vmin;
+    display: flex;
+    flex-direction: column;
+    background-color: #cacaca;
+    padding: 0.3em;
+}
+
+.display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.previous {
+    font-size: 2vh;
+}
+
+.answer {
+    font-size: 3vh;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 0.3em;
+    flex: 2.5;
+}
+
+button {
+    font-size: large;
+    font-weight: bold;
+    background-color: #ececec;
+    border: none;
+}
+
+#equals {
+    background-color: #5E76A2;
+}
