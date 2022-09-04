@@ -1,14 +1,6 @@
 const buttons = document.querySelector('.buttons');
 var input;
 
-for(let i = 9; i >= 0; i--) {
-    const button = document.createElement('button');
-    button.innerText = `${i}`;
-    buttons.appendChild(button);
-
-
-}
-
 function add(num1, num2) {
     return num1 + num2;
 }
