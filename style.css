@@ -34,7 +34,7 @@ body {
     font-size: 2vh;
 }
 
-.answer {
+.main {
     font-size: 6vh;
     font-weight: bold;
 }
@@ -72,6 +72,6 @@ button {
     background-color: #996666;
 }
 
-#delete {
+#DEL {
     background-color: #996666;
 }
