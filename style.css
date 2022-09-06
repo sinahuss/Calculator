@@ -53,6 +53,11 @@ button {
     font-weight: bold;
     background-color: #ffffff;
     border: none;
+    filter: brightness(1);
+}
+
+button:hover {
+    filter: brightness(0.7);
 }
 
 .operation {

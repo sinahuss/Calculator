@@ -63,8 +63,9 @@ buttons.addEventListener('click', e => {
             mainDisplay.innerText = firstInput;
             secondInput = '';
         }
-        
+
         key = button.innerText;
+        
         if (firstInput == '') {
             firstInput = parseFloat(mainDisplay.innerText);
         }
