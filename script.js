@@ -62,14 +62,12 @@ buttons.addEventListener('click', e => {
             firstInput = operate(actions[key], firstInput, secondInput);
             mainDisplay.innerText = parseFloat(firstInput.toFixed(7));
             secondInput = '';
+        } else if (firstInput == '') {
+            firstInput = parseFloat(mainDisplay.innerText);
         }
 
         key = button.innerText;
 
-        if (firstInput == '') {
-            firstInput = parseFloat(mainDisplay.innerText);
-        }
-        
         previousDisplay.innerText = firstInput + ' ' + key + ' ' + secondInput;
 
         reset = true;
