@@ -5,13 +5,13 @@ var mainDisplay = document.querySelector('.main');
 var previousDisplay = document.querySelector('.previous');
 
 var reset = true;
-var phaseOne = true;
-var solved = false;
+var firstInput = '';
+var secondInput = '';
 
-var key;
+var key = 'default';
 
 function add(num1, num2) {
-    return Number(num1) + Number(num2);
+    return num1 + num2;
 }
 
 function subtract(num1, num2) {
@@ -26,69 +26,87 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
+function equals(num1, num2) {
+    return num1;
+}
+
 //Create Object literal to avoid using switch or long if/else statements while
 //allowing more actions to be added
 const actions = {
     '+': add,
     '-': subtract,
     '*': multiply,
-    '/': divide
+    '/': divide,
+    'default': equals
 };
 
 function operate(operation, num1, num2) {
     return operation(num1, num2);
 }
 
-/* equals.addEventListener('click', () => {
-    mainDisplay.innerText = mainDisplay.innerText
-}); */
-
 buttons.addEventListener('click', e => {
     let button = e.target;
 
     if (button.className == 'input') {
-
         if (reset) {
             mainDisplay.innerText = button.innerText;
-            reset = !reset;
-        }
-
-        /* else if (operatingSecond) {
-            mainDisplay.innerText = button.innerText;
-            operatingSecond = !operatingSecond;
-        } */
-        
-        else {
+            reset = false;
+        } else {
             mainDisplay.innerText += button.innerText;
         }
     }
 
     else if (button.className == 'operation') {
+        if (firstInput != '' && !reset){
+            secondInput = parseFloat(mainDisplay.innerText);
+            firstInput = operate(actions[key], firstInput, secondInput);
+            mainDisplay.innerText = firstInput;
+            secondInput = '';
+        }
+        
         key = button.innerText;
-        //if ()
-        previousDisplay.innerText = mainDisplay.innerText + ' ' + key;
+        if (firstInput == '') {
+            firstInput = parseFloat(mainDisplay.innerText);
+        }
+        
+        previousDisplay.innerText = firstInput + ' ' + key + ' ' + secondInput;
 
-        reset = !reset;
+        reset = true;
     }
 
     else if (button.id == 'equals') {
-        previousDisplay.innerText += ' ' + mainDisplay.innerText + ' =';
-        mainDisplay.innerText = operate(actions[key],
-                        parseInt(previousDisplay.innerText),
-                        mainDisplay.innerText);
-        
+        if (key == 'default') {
+            firstInput = parseFloat(mainDisplay.innerText);
+            previousDisplay.innerText = firstInput + ' =';
+        } else {
+            secondInput = reset ? firstInput : parseFloat(mainDisplay.innerText);
+            previousDisplay.innerText = firstInput + ' ' + key + ' ' + secondInput + ' =';
+        }
+        mainDisplay.innerText = operate(actions[key], firstInput, secondInput);
+        firstInput = '';
+        secondInput = '';
+        key = 'default';
+        reset = true;
     }
     
     else if (button.id == 'CE') {
-        mainDisplay.innerText = '';
-        previousDisplay.innerText = '';
+        mainDisplay.innerText = '0';
+        reset = true;
     }
     
     else if (button.id == 'C') {
-        mainDisplay.innerText = '';
+        firstInput = '';
+        secondInput = '';
+        mainDisplay.innerText = '0';
+        previousDisplay.innerText = '';
+        reset = true;
     }
     
     else if (button.id == 'DEL') {
-        console.log('del');
+        mainDisplay.innerText = mainDisplay.innerText.slice(0, -1);
+        if (mainDisplay.innerText == '') {
+            mainDisplay.innerText = '0';
+            reset = true;
+        }
     }
 }, true);
