@@ -60,12 +60,12 @@ buttons.addEventListener('click', e => {
         if (firstInput != '' && !reset){
             secondInput = parseFloat(mainDisplay.innerText);
             firstInput = operate(actions[key], firstInput, secondInput);
-            mainDisplay.innerText = firstInput;
+            mainDisplay.innerText = parseFloat(firstInput.toFixed(7));
             secondInput = '';
         }
 
         key = button.innerText;
-        
+
         if (firstInput == '') {
             firstInput = parseFloat(mainDisplay.innerText);
         }
@@ -83,7 +83,7 @@ buttons.addEventListener('click', e => {
             secondInput = reset ? firstInput : parseFloat(mainDisplay.innerText);
             previousDisplay.innerText = firstInput + ' ' + key + ' ' + secondInput + ' =';
         }
-        mainDisplay.innerText = operate(actions[key], firstInput, secondInput);
+        mainDisplay.innerText = parseFloat(operate(actions[key], firstInput, secondInput).toFixed(7));
         firstInput = '';
         secondInput = '';
         key = 'default';
