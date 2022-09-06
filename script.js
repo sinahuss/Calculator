@@ -98,6 +98,7 @@ buttons.addEventListener('click', e => {
         secondInput = '';
         mainDisplay.innerText = '0';
         previousDisplay.innerHTML = '<br>';
+        key = 'default';
         reset = true;
     }
     
