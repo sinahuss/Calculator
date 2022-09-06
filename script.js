@@ -99,7 +99,7 @@ buttons.addEventListener('click', e => {
         firstInput = '';
         secondInput = '';
         mainDisplay.innerText = '0';
-        previousDisplay.innerText = '';
+        previousDisplay.innerHTML = '<br>';
         reset = true;
     }
     
