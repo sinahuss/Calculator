@@ -50,6 +50,7 @@ buttons.addEventListener('click', e => {
 
         if (reset) {
             mainDisplay.innerText = button.innerText;
+            reset = !reset;
         }
 
         /* else if (operatingSecond) {
@@ -60,8 +61,6 @@ buttons.addEventListener('click', e => {
         else {
             mainDisplay.innerText += button.innerText;
         }
-
-        reset = !reset;
     }
 
     else if (button.className == 'operation') {
@@ -75,8 +74,8 @@ buttons.addEventListener('click', e => {
     else if (button.id == 'equals') {
         previousDisplay.innerText += ' ' + mainDisplay.innerText + ' =';
         mainDisplay.innerText = operate(actions[key],
-                        mainDisplay.innerText,
-                        parseInt(previousDisplay.innerText));
+                        parseInt(previousDisplay.innerText),
+                        mainDisplay.innerText);
         
     }
     
